@@ -23,10 +23,10 @@
 // export let adminUrlAddr = "https://was.barodoctor.com/admin";
 
 // 남원 서버용
-//export let shopUrlAddr = "https://docker.dhdx.kr/senioredudev";
-//export let authUrlAddr = "https://docker.dhdx.kr/senioredudev";
-//export let mobileUrlAddr = "https://docker.dhdx.kr/senioredudev";
-//export let adminUrlAddr = "https://docker.dhdx.kr/senioredudev";
+export let shopUrlAddr = "https://docker.dhdx.kr/senioredudev";
+export let authUrlAddr = "https://docker.dhdx.kr/senioredudev";
+export let mobileUrlAddr = "https://docker.dhdx.kr/senioredudev";
+export let adminUrlAddr = "https://docker.dhdx.kr/senioredudev";
 
 // 남원 로컬개발용
 // export let shopUrlAddr = "http://localhost:7000";
@@ -40,10 +40,10 @@
 // export let mobileUrlAddr = "http://localhost:9000";
 // export let adminUrlAddr = "http://localhost:9000";
 
-export let shopUrlAddr = "https://ecare.namwon.go.kr/be";
-export let authUrlAddr = "https://ecare.namwon.go.kr/be";
-export let mobileUrlAddr = "https://ecare.namwon.go.kr/be";
-export let adminUrlAddr = "https://ecare.namwon.go.kr/be";
+// export let shopUrlAddr = "https://ecare.namwon.go.kr/be";
+// export let authUrlAddr = "https://ecare.namwon.go.kr/be";
+// export let mobileUrlAddr = "https://ecare.namwon.go.kr/be";
+// export let adminUrlAddr = "https://ecare.namwon.go.kr/be";
 
 
 export let urlAddr = "";
