@@ -8,7 +8,7 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 const config = {
   kit: {
     paths: {
-      base: '/hospital'
+      base: ''
     },
     adapter: adapter({
       pages: 'build',
