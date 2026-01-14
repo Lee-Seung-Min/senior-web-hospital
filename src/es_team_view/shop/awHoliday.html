@@ -1,0 +1,52 @@
+
+    <section class="full_layer" id="holiday_add">
+        <div class="bg"></div>
+        <div class="box_1 holiday">
+
+            <p class="text_tit">휴일등록</p>
+            <button type="button" class="modal_close" onClick="closeAlert('holiday_add')"><i class="xi-close-min"></i></button>
+
+            <hr>
+            <div class="form_table">
+            <table class="holiday_tbl">
+                <tr>
+                    <th>기간</th>
+                    <td>
+                        <div class="form_inline">
+                            <input type="date"/>
+                            <span> ~ </span>
+                            <input type="date" />
+                            <button type="button" class="mbtn_b">중복확인</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>휴일명 /th>
+                    <td>
+                        <input type="text" name="" id="" class="name" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>안내문구 :</th>
+                    <td><textarea class="desc"></textarea></td>
+                </tr>
+            </table></div>
+            <p class="btn_wrap">
+                <button type="button" class="btn_02 small close_btn">저장</button>
+            <p>
+        </div>
+    </section>
+
+    <!-- 휴일관리 - 삭제팝업 -->
+    <section class="full_layer" id="holiday_del">
+        <div class="bg"></div>
+        <div class="box_1">
+            <p class="txt_c">선택하신 항목을 삭제하시겠습니까?</p>
+            <button type="button" class="modal_close" onClick="closeAlert('holiday_del')"><i class="xi-close-min"></i></button>
+<hr>
+            <p class="btn_wrap inline">
+                <button type="button" class="btn_02 small close_btn">예</button>
+                <button type="button" class="btn_03 small close_btn">아니오</button>
+            <p>
+        </div>
+    </section>

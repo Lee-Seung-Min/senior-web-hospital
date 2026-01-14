@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="../../assets/css/reset.css">
+  <link rel="stylesheet" href="../../assets/css/common.css">
+  <!-- 아이콘 폰트 -->
+  <link rel="stylesheet" href="../../assets/font/XEIcon/xeicon.min.css" />
+
+  <link rel="stylesheet" href="../../assets/font/icomoon/style.css" />
+  <!-- 폰트 -->
+  <link rel="stylesheet" href="../../assets/font/pretendard.css" />
+  <script src="../../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/js/html5shiv.min.js"></script>
+  <script src="../../assets/js/placeholders.min.js"></script>
+  <script src="../../assets/js/prefixfree.min.js"></script>
+  <!-- 달력 소스 S -->
+  <script src="../../assets/js/jquery-ui.js"></script>
+  <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
+  <!-- 달력 소스 E -->
+  <script src="../../assets/js/common.js"></script>
+
+  <!-- 메뉴 추가 S-->
+  <script src="../../assets/js/menu.js"></script>
+  <!-- 메뉴 추가 E-->
+  <!-- 리얼 그리드 S -->
+
+  <script src="../../assets/realgrid/realgridjs-lic.js"></script>
+  <script src="../../assets/realgrid/realgridjs_eval.1.1.43.min.js"></script>
+  <script src="../../assets/realgrid/realgridjs-api.1.1.43.js"></script>
+
+  <!-- 리얼 그리드 E-->
+
+  <title>BIT Doctor 관리자</title>
+</head>
+
+<body>
+  <div id="skipNavi">
+    <a href="#left_wrap">전체메뉴 바로가기</a>
+    <a href="#content">본문바로가기</a>
+  </div>
+  <section id="head">
+    <button type="button" onClick="onMenuSlide()">
+      <i class="icon-arrow icon-chevron-left"></i>
+      <i class="icon-menu"></i>
+    </button>
+    <h1>닥터비트 가맹점 Admin </h1>
+    <div class="admin">
+      <i class="icon-account_circle"></i>
+      <span><b>관리자</b>님</span>
+      <button type="button" class="btn_03 btn_xs" onclick="">Logout</button>
+    </div>
+  </section>
+
+  <section id="con">
+    <div id="menu">
+      <h1></h1>
+      <div class="lnb"></div>
+      <div class="copyright">
+        BIT Doctor.
+      </div>
+    </div>
+
+
+    <div id="content">
+
+
+      <!-- content S -->
+      <h2 class="page_title">
+        진료 예약 목록
+      </h2>
+
+      <div class="box_search">
+        <span>기간</span>
+        <label class="select_data"><input type="text" class="datepicker" /></label>
+        ~
+        <label class="select_data"><input type="text" class="datepicker" /></label>
+
+        <select>
+          <option value="">전체</option>
+          <option value="">환자명</option>
+          <option value="">회원명</option>
+          <option value="">의료진</option>
+        </select>
+        <label><input type="text" name="" id="" /></label>
+        상태
+        <select>
+          <option value="">정상</option>
+          <option value="">취소</option>
+        </select>
+        <button type="button" class="mbtn_n_5">검색</button>
+
+      </div>
+
+      <!-- 목록 S -->
+      <div class="form_table list">
+
+        <div id="realgrid" class="realgrid"></div>
+        <script>
+          // JavaScript
+
+          var gridView;
+          var dataProvider;
+          RealGridJS.setRootContext("/assets/realgrid");
+          dataProvider = new RealGridJS.LocalDataProvider();
+          gridView = new RealGridJS.GridView("realgrid");
+          gridView.setDataSource(dataProvider);
+
+          gridView.setDisplayOptions({
+            fitStyle: "even"
+          });
+
+
+          var jsonData = [
+            {
+              "NO": "1", 
+              "RSRVT_DATE": "2023-01-05T09:01:00", 
+              "PTNT_NAME": "홍길동", 
+              "RELATIONSHIP": "본인",
+              "MEMEBER_NAME": "홍길동",
+              "MEDICAL_COURSE": "한의학",
+              "MEDICAL_ITEMS": "감기",
+              "MEDICAL_STAFF": "우희정",
+              "MEDICAL_TYPE": "원격",
+              "STATE": "진료대기"
+            },
+            {
+              "NO": "2", 
+              "RSRVT_DATE": "2023-04-05T09:01:00", 
+              "PTNT_NAME": "홍길동", 
+              "RELATIONSHIP": "본인",
+              "MEMEBER_NAME": "홍길동",
+              "MEDICAL_COURSE": "한의학",
+              "MEDICAL_ITEMS": "감기",
+              "MEDICAL_STAFF": "우희정",
+              "MEDICAL_TYPE": "원격",
+              "STATE": "진료대기"
+            }            
+          ];
+
+          var columns = [
+
+            {
+              "name": "NO",
+              "fieldName": "NO",
+              "width": 60,
+              "header": {
+                "text": "번호"
+              },
+              "styles": {
+                "textAlignment": "center",
+                
+              }
+            },
+            {
+              "name": "RSRVT_DATE",
+              "fieldName": "RSRVT_DATE",
+              "width": 120,
+              "dataType": "datetime",
+              "datetimeFormat": "platform",
+              "header": {
+                "text": "예약일시"
+              },
+              "styles": {
+                "textAlignment": "center",
+                "datetimeFormat": "yy.MM.dd HH:mm"
+
+              }
+            },
+            {
+              "name": "PTNT_NAME",
+              "fieldName": "PTNT_NAME",
+              "width": 100,
+              "header": {
+                "text": "환자명"
+              },
+              "styles": {
+                "textAlignment": "center",
+                
+              }
+            },
+            {
+              "name": "RELATIONSHIP",
+              "fieldName": "RELATIONSHIP",
+              "width": 80,
+              "header": {
+                "text": "관계"
+              },
+              "styles": {
+                "textAlignment": "center"
+              }
+            },
+            {
+              "name": "MEMEBER_NAME",
+              "fieldName": "MEMEBER_NAME",
+              "width": 100,
+              "header": {
+                "text": "회원명"
+              },
+              "styles": {
+                "textAlignment": "center"
+              }
+            },
+            {
+              "name": "MEDICAL_COURSE",
+              "fieldName": "MEDICAL_COURSE",
+              "width": 130,
+              "header": {
+                "text": "진료과목"
+              },
+              "styles": {
+                "textAlignment": "center"
+              }
+            },
+            {
+              "name": "MEDICAL_ITEMS",
+              "fieldName": "MEDICAL_ITEMS",
+              "width": 120,
+              "header": {
+                "text": "진료항목"
+              },
+              "styles": {
+                "textAlignment": "center"
+              }
+            },
+            {
+              "name": "MEDICAL_STAFF",
+              "fieldName": "MEDICAL_STAFF",
+              "width": 100,
+              "header": {
+                "text": "의료진"
+              },
+              "styles": {
+                "textAlignment": "center"
+              }
+            },
+            {
+              "name": "MEDICAL_TYPE",
+              "fieldName": "MEDICAL_TYPE",
+              "width": 80,
+              "header": {
+                "text": "진료구분"
+              },
+              "styles": {
+                "textAlignment": "center"
+              }
+            },
+            {
+              "name": "STATE",
+              "fieldName": "STATE",
+              "width": 80,
+              "header": {
+                "text": "상태"
+              },
+              "styles": {
+                "textAlignment": "center"
+              }
+            }
+
+          ];
+
+          gridView.setColumns(columns);
+          dataProvider.setFields(columns);
+          dataProvider.setRows(jsonData);
+
+          gridView.setStateBar({
+            visible: false
+          });
+
+        </script>
+      </div>
+      <!-- 목록 E -->
+
+      <div class="form_table">
+        <h3>진료정보</h3>
+        <p class="ess_info">
+          <button type="button" data-url="awDgnsEnt.html" class="mbtn_n">원격진료</button>
+          <select>
+            <option value="">접수</option>
+            <option value="">거절</option>
+            <option value="">입장</option>
+            <option value="">취소</option>
+          </select>
+          <button type="button" class="mbtn_n_4">저장</button>
+        </p>
+
+        <table>
+          <colgroup>
+            <col style="width:12% ;" />
+            <col style="width:38% ;" />
+            <col style="width:12% ;" />
+          </colgroup>
+          <tr>
+            <th>의 료 진</th>
+            <td>우희정 <button type="button" class="mbtn_n">변경</button></td>
+            <th>예약상태</th>
+            <td>진료신청</td>
+          </tr>
+          <tr>
+            <th>진료일시</th>
+            <td>2023-03-02 14:00</td>
+            <th>진료구분</th>
+            <td>원격</td>
+          </tr>
+          <tr>
+            <th>환 자 명</th>
+            <td>박형용(본인)</td>
+            <th>회 원 명</th>
+            <td>박형용</td>
+          </tr>
+          <tr>
+            <th>진료과</th>
+            <td>한의학</td>
+            <th>진료항목</th>
+            <td>감기</td>
+          </tr>
+          <tr>
+            <th>메모</th>
+            <td colspan="3">
+              내용
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="form_table">
+        <h3>결제정보</h3>
+        <p class="ess_info">
+          <button type="button" class="mbtn_b dgns" onclick="onPspn()">처방전</button>
+          <button type="button" class="mbtn_b" data-url="JavaScript:onNotify()">알림</button>
+        </p>
+        <table>
+          <colgroup>
+            <col style="width:12% ;" />
+            <col style="width:38% ;" />
+            <col style="width:12% ;" />
+            <col style="width:38% ;" />
+          </colgroup>
+          <tr>
+            <th>결제금액</th>
+            <td>4,900원</td>
+            <th>결제상태</th>
+            <td>결제완료</td>
+          </tr>
+          <tr>
+            <th>결제일시</th>
+            <td>2023-03-02 14:05:03</td>
+            <th>결제상태</th>
+            <td>정상</td>
+          </tr>
+        </table>
+      </div>
+      <!--
+<div class = "box_1">
+    <div class="form_table" >
+          <h3>처방전</h3> 
+          <p class="ess_info"><button class="mbtn_b">처방전등록</button></p>
+          <table>
+            <tr>
+              <td colspan="3" style="text-align: center"><h3>처 방 전</h3></td>
+            </tr>
+            <tr>
+              <td width="45%" class="noTd">요양기관번호 <span class="noStxt">000000002</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"> 건강보험 <input type="checkbox"> 의료급여 <input type="checkbox"> 산재보험 <input type="checkbox"> 자동차보험 <input type="checkbox"> 기타 </td>
+            </tr>
+          </table>   
+         <table>
+            <tr>
+              <th colspan="2">교부 연월 및 번호</th>
+              <td>20230302</td>
+              <th rowspan="3">의
+                료
+                기
+                관
+              </th>
+              <th>명칭</th>
+              <td>모커리한방병원</td>
+            </tr>
+            <tr>
+              <th rowspan="2">환자</th>
+              <th>성명</th>
+              <td>박수현</td>
+              <th>전화번호</th>
+              <td>025555999</td>
+            </tr>
+            <tr>
+              <th>주민등록번호</th>
+              <td>200111-4******</td>
+              <th>팩스번호</th>
+              <td>025555999</td>
+            </tr>
+            <tr>
+              <th rowspan="2">질병 분류 기호</th>
+              <td>R51</td>
+              <th rowspan="2">처방의료인의 서명</th>
+              <td rowspan="2">박형용     (인)</td>
+              <th>면허증명</th>
+              <td>한의사</td>
+            </tr>
+            <tr>
+              <td></td>
+              <th>면허번호</th>
+              <td>21588</td>
+            </tr>
+            <tr>
+             <td colspan="6" style="text-align: center">환자의 요구가 있을 때에는 질병분류 기호를 기재하지 아니합니다.</td>
+            </tr>
+            <tr>
+              <th colspan="2">처방의약품의 명칭</th>
+              <th>1회 투약량</th>
+              <th>1회 투여일 수</th>
+              <th>총 투여일 수</th>    
+              <th>용법</th>
+            </tr>
+            <tr>
+              <td>어린이용타이레놀정 80mg(아세트아미노펜)</td>
+              <td></td>
+              <td>1</td>
+              <td>1</td>
+              <td>3</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th colspan="6" style="text-align: center">주사제 처방내역 <input type="checkbox"> 원내조제 <input type="checkbox"> 원외 처방</th>
+            </tr>
+        </table>
+        <table>
+            <th>사용기간</th>
+            <td>교부일로부터 (7)일간, 약국제출용은 사용기간내에 약국에 제출하여야 합니다.</td>
+        </table>
+    </div>
+</div> 
+-->
+      <!-- content E -->
+      <footer>
+        <p>Copyright BIT Doctor. All Rights Reserved.</p>
+      </footer>
+    </div>
+  </section>
+
+
+</body>
+
+</html>
